@@ -1,8 +1,12 @@
+import { Fragment } from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
-export const BoxPersonal = () => {
+
+export const BoxPersonal = ({activeStep, handleNext}) => {
     return(
-        <div className="personal box">
+        <div className={activeStep === 0 ? 'personal box active' : 'personal box'}>
           <h2 className="subtitle">Personal info</h2>
 
           <TextField
@@ -102,6 +106,25 @@ export const BoxPersonal = () => {
             variant="outlined"
             fullWidth
           />    
+
+          <div>
+            <Fragment>
+                <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                  
+
+                  <Box sx={{ flex: '1 1 auto' }} />
+                  
+                  <Button 
+                    onClick={handleNext} 
+                    sx={{ mr: 1 }}
+                    disabled={activeStep > 0}
+                  >
+                    Next
+                  </Button>
+                  
+                </Box>
+            </Fragment>
+          </div>
         </div>
     )
 }

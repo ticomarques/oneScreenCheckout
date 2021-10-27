@@ -34,21 +34,8 @@ const FormContext = createContext(undefined);
 // 2- Reducer
 const formReducer = (state, action) => {
     switch(action.type) {
-        case action.setCurrentStep :
+        case "setCurrentStep" :
             return {...state, currentStep: action.payload};
-        
-        case action.setName :
-            return {...state, name: action.payload};
-
-        case action.setLevel :
-            return {...state, level: action.payload};
-
-        case action.setEmail :
-            return {...state, email: action.payload};
-        
-        case action.setGithub :
-            return {...state, github:action.payload};
-
         default :
             return state;
     }

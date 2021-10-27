@@ -1,12 +1,16 @@
+import { Fragment } from 'react';
+import Box from '@mui/material/Box';
+
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import RadioGroup from '@mui/material//RadioGroup';
 import Radio from '@mui/material/Radio';
 import Typography from "@mui/material/Typography";
+import Button from '@mui/material/Button';
 
-export const BoxShipping = () => {
+export const BoxShipping = ({activeStep, handleBack, handleNext}) => {
     return(
-      <div className="payment box">
+      <div className={activeStep === 1 ? 'payment box active' : 'payment box'}>
       <h2 className="subtitle">Shipping</h2>
       
       <RadioGroup
@@ -72,6 +76,35 @@ export const BoxShipping = () => {
       />
         
       </div>
+
+
+      <div>
+            <Fragment>
+                <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                  
+                  <Button
+                    color="inherit"
+                    disabled={activeStep > 1 || activeStep === 0}
+                    onClick={handleBack}
+                    sx={{ mr: 1 }}
+                  >
+                    Back 
+                  </Button>
+
+                  <Box sx={{ flex: '1 1 auto' }} />
+                  
+                  <Button 
+                    onClick={handleNext} 
+                    disabled={activeStep > 1 || activeStep === 0}
+                    sx={{ mr: 1 }}>
+                    Next
+                  </Button>
+                  
+                </Box>
+            </Fragment>
+          </div>
+
+
       </div>
     );
 };
